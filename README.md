@@ -1,4 +1,4 @@
 # PS5-BrowserSupport
 
-##Direct link
+## Direct link
 [http://vitaports.com]
