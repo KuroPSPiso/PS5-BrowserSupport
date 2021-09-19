@@ -212,3 +212,14 @@ h1{
 .tile:hover{
     border-width: 0.3rem;
 }
+
+.particle {
+    opacity: 0.25;
+    background: #fff;
+    width: 0.5rem;
+    height:0.5rem;
+    position: absolute;
+    left: 50%;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem #fff;
+  }
