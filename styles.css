@@ -114,10 +114,12 @@ h1{
     right: 10rem;
     display: flex;
     align-items: stretch;
+    justify-content: center;
 }
 
 .address-bar>input{
     flex: 1;
+    max-width: 34rem;
 }
 
 .address-bar>a{
