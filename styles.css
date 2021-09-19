@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&family=Roboto:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 html, body {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Roboto', sans-serif;
     width: 100%;
     height: 100%;
     background: rgb(34,34,51);
@@ -9,6 +10,36 @@ html, body {
     color: #fff;
     font-size: 14px;
 }
+
+h1{
+    font-size: 1.4rem;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+  
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+  
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+  
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+  }
 
 .address-bar {
     position: fixed;
@@ -30,11 +61,17 @@ html, body {
     align-content: center;
     height: 2rem;
     line-height: 2rem;
-    color: #fff;
+    color: #223;
     text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #999;
+    border-radius: 3px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
-.browse{
+.pill{
     height: 2rem;
     padding: 0.2rem 0.5rem;
     font-size: 1rem;
@@ -45,6 +82,29 @@ html, body {
     background-color: #fff;
     color: #223;
 }
+.pill>img {
+    width: 2rem;
+    height: 2rem;
+    float: left;
+}
+
+.search-engines{
+    position: fixed;
+    top: 5rem;
+    left: 2rem;
+    right: 2rem;
+    display: grid;
+    grid-template-columns: auto /*20rem 2rem*/ 20rem auto;
+    grid-template-rows: auto;
+    grid-template: "spacer item spacer item spacer";
+    text-align: center;
+}
+/* .search-engines>.spacer{
+    grid-area: spacer;
+}
+.search-engines>a{
+    grid-area: item;
+} */
 
 .content{
     position: fixed;
@@ -54,14 +114,101 @@ html, body {
     right: 2rem;
     border: none;
     border-radius: 2rem;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
-.content-bg{
+.content>.bg{
     background-color: #fff;
-    opacity: 20%;
+    opacity: 10%;
     height: 100%;
     width: 100%;
     position: absolute;
     z-index: -1;
+}
+
+.group {
+    text-align: center;
+    width: 90%;
+    left: 5%;
+    right: 5%;
+    position: relative;
+    margin-bottom: 4rem;
+}
+
+.group>.tile-container {
+    display: flex;
+    flex: auto;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex:content;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.group-container{
+    overflow-x: hidden;
+    overflow-y: auto;
+    top: 0;
+    bottom: 0;
+    left: 2%;
+    right: 2%;
+    position: absolute;
+    width: 96%;
+    text-align: center;
+    scrollbar-color: #3484c2 #223;
+    scrollbar-width: thin;
+}
+
+.group-container::-webkit-scrollbar {
+    width: 0.5rem;
+}
+  
+.group-container::-webkit-scrollbar-track {
+    background-color: #223;
+    border-radius: 100px;
+}
+
+.group-container::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    background-image: linear-gradient(180deg, #d0368a 0%, #708ad4 99%);
+    box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+}
+
+.tile {
+    width: 6rem;
+    height: 6rem;
+    background-color: #223;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 1rem;
+    box-shadow: 0.1rem 0.1rem 0.5rem #223;
+    box-sizing: border-box;
+    border: #2af solid 0rem;
+    border-image-slice: 1;
+    transition: all 0.1s;
+    text-align: center;
+    text-shadow: 0.1rem 0.1rem 0.1rem #223;
+    color: white;
+    text-decoration: none;
+    margin: 0.4rem;
+    background-size: 80%;
+}
+
+.tile>span {
+    display: block;
+    text-align: center;
+    position: relative;
+    bottom: -6.5rem;
+    width: 6rem;
+    height: 4rem;
+    overflow: hidden;
+    line-break: auto;
+    font-weight: bold;
+}
+
+.tile:hover{
+    border-width: 0.3rem;
 }

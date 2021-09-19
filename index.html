@@ -1,37 +1,75 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
         <link rel="stylesheet" href="./styles.css"/>
     </head>
     <body>
         <form class="address-bar">
-            <input id="localLink" autocomplete="on" placeholder="Enter address"/>
-            <a id="openTab" target="_blank">
-                ➔
+            <input id="localLink" autocomplete="on" placeholder="Search with Google or enter address"/>
+            <a id="openTab" onclick="browse()">
+                <span class="material-icons">search</span>
             </a>
         </form>
 
+        <div class="search-engines">
+            <div class="spacer"></div>
+            <!--<a class="pill" onclick="googleSearch()"><img src=""/>Search with Google</a>
+            <div class="spacer"></div>-->
+            <a class="pill" onclick="duckDuckGoSearch()"><img src="./img/The_DuckDuckGo_Duck.png"/><span>Search with DuckDuckGo</span></a>
+            <div class="spacer"></div>
+        </div>
+
         <div class="content">
-            <div class="content-bg"></div>
-            <a class="browse" onclick="browseLocal()">Open in iFrame</a>
-
-            <iframe id="localbrowser">
-
-            </iframe>
+            <div class="bg"></div>
+            <div class="group-container">
+                <div class="group">
+                    <h1>Common Links</h1>
+                    <article></article>
+                    <div class="tile-container">
+                        <a class="tile" target="_blank" href="https://youtube.com/" style="background-image: url('./img/links/youtube.svg'); background-color: #fff;"><span>Youtube</span></a>
+                        <a class="tile" target="_blank" href="https://m.youtube.com/" style="background-image: url('./img/links/youtube.svg'); background-color: #666;"><span>Youtube (Mobile)</span></a>
+                        <a class="tile" target="_blank" href="https://twitter.com/" style="background-image: url('./img/links/twitter.svg'); background-color: #ddd; background-size: 50%;"><span>Twitter</span></a>
+                        <a class="tile" target="_blank" href="https://facebook.com/" style="background-image: url('./img/links/fb.png'); background-color: #43c;"><span>Facebook</span></a>
+                        <a class="tile" target="_blank" href="https://twitch.tv/"  style="background-image: url('./img/links/twitch.svg'); background-color: #9046ff;"><span>Twitch</span></a>
+                    </div>
+                </div>
+                <div class="group">
+                    <h1>Games</h1>
+                    <article>
+                        Though this browser doesn't support Webgl fully and lacks 3D capability, several 2D HTML5 games are supported.
+                        Here is a curated list of (itch.io) games.
+                    </article>
+                    <div class="tile-container">
+                        <a class="tile" target="_blank" href="https://2048.ninja/" style="background-image: url('./img/games/2048.bmp'); background-color: #000;"><span>2048</span></a>
+                    </div>
+                </div>
+            </div>
         </div>
         <script>
             var brwsr = document.getElementById('localbrowser');
             var lnk = document.getElementById('localLink');
             var openTab = document.getElementById('openTab');
 
-            var browseLocal = function(){
-                console.log("browse");
-                brwsr.src = "https://2048.ninja/";
+            var googleSearch = function(){
+                window.open(`https://www.google.com/search?q=${lnk.value}`);
             }
 
-            lnk.onchange = function(){
-                openTab.href = lnk.value;
-                console.log(lnk.value);
+            var duckDuckGoSearch = function(){
+                window.open(`https://duckduckgo.com/?q=${lnk.value}`);
+            }
+
+            var browse = function(){
+                var lnkVal = lnk.value;
+                if(lnkVal.includes(' ') || !lnkVal.includes('.')){
+                    googleSearch();
+                } else {
+                    if(!lnkVal.includes('http://' || !lnkVal.includes('https://'))){
+                        lnkVal = `http://${lnkVal}`;
+                    }
+                    window.open(lnkVal);
+                }
             }
         </script>
     </body>
