@@ -49,7 +49,7 @@ jsGB = {
     	GPU.reset();
 	MMU.reset();
 	Z80.reset();
-	MMU.load('./opus5.gb');
+	MMU.load('https://vitaports.com/gb/opus5.gb');
         Z80._r.pc=0x100;MMU._inbios=0;Z80._r.sp=0xFFFE;Z80._r.hl=0x014D;Z80._r.c=0x13;Z80._r.e=0xD8;Z80._r.a=1;
 	jsGB._interval = 0;
     },
