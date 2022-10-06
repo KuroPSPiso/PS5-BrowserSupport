@@ -2,8 +2,11 @@ window.onload = function()
 {
     document.getElementById('jsgb_reset').onclick = jsGB.reset;
     document.getElementById('jsgb_run').onclick = jsGB.run;
+    window.onmousedown = KEY.mousedown;
+    window.onmouseup = KEY.mouseup;
     window.onkeydown = KEY.keydown;
     window.onkeyup = KEY.keyup;
+    document.addEventListener('contextmenu', event => event.preventDefault());
     jsGB.reset();
 };
 
@@ -722,6 +725,30 @@ KEY = {
     KEY._colidx = v&0x30;
   },
 
+  //arrow 37-40
+  //a:      Z(90)  | ESC(27)  | F1(112)
+  //b:      x(88)  | MB1      | F2(113)
+  //start:  ent(13)| F3(114)  | F10(121)
+  //select: spc(32)| F9(120)
+
+  mousedown: function(e) {
+    switch (e.which) {
+      case 1: //left
+        KEY._keys[0] &= 0xE; e.preventDefault(); break;
+      case 3: //right
+        KEY._keys[0] &= 0xD; e.preventDefault(); break;
+    }
+  },
+  
+  mouseup: function(e) {
+    switch (e.which) {
+      case 1: //left
+        KEY._keys[0] |= 0x1; e.preventDefault(); break;
+      case 3: //right
+        KEY._keys[0] |= 0x2; e.preventDefault(); break;
+    }
+  },
+
   keydown: function(e) {
     switch(e.keyCode)
     {
@@ -730,9 +757,15 @@ KEY = {
       case 38: KEY._keys[1] &= 0xB; e.preventDefault(); break;
       case 40: KEY._keys[1] &= 0x7; e.preventDefault(); break;
       case 90: KEY._keys[0] &= 0xE; e.preventDefault(); break;
+      case 27: KEY._keys[0] &= 0xE; e.preventDefault(); break;
+      case 112: KEY._keys[0] &= 0xE; e.preventDefault(); break;
       case 88: KEY._keys[0] &= 0xD; e.preventDefault(); break;
+      case 113: KEY._keys[0] &= 0xD; e.preventDefault(); break;
       case 32: KEY._keys[0] &= 0xB; e.preventDefault(); break;
+      case 120: KEY._keys[0] &= 0xB; e.preventDefault(); break;
       case 13: KEY._keys[0] &= 0x7; e.preventDefault(); break;
+      case 114: KEY._keys[0] &= 0x7; e.preventDefault(); break;
+      case 121: KEY._keys[0] &= 0x7; e.preventDefault(); break;
     }
   },
 
@@ -744,9 +777,15 @@ KEY = {
       case 38: KEY._keys[1] |= 0x4; e.preventDefault(); break;
       case 40: KEY._keys[1] |= 0x8; e.preventDefault(); break;
       case 90: KEY._keys[0] |= 0x1; e.preventDefault(); break;
+      case 27: KEY._keys[0] |= 0x1; e.preventDefault(); break;
+      case 112: KEY._keys[0] |= 0x1; e.preventDefault(); break;
       case 88: KEY._keys[0] |= 0x2; e.preventDefault(); break;
+      case 113: KEY._keys[0] |= 0x2; e.preventDefault(); break;
       case 32: KEY._keys[0] |= 0x4; e.preventDefault(); break;
+      case 120: KEY._keys[0] &= 0xB; e.preventDefault(); break;
       case 13: KEY._keys[0] |= 0x8; e.preventDefault(); break;
+      case 114: KEY._keys[0] |= 0x8; e.preventDefault(); break;
+      case 121: KEY._keys[0] |= 0x8; e.preventDefault(); break;
     }
   }
 };

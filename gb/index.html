@@ -43,6 +43,8 @@
  </div>
 
  <script>
+  document.defaultAction = false;
+/*
   document.addEventListener('keydown', function(event) {
       if(event.keyCode == 37) {
           alert('Left was pressed');
@@ -51,7 +53,20 @@
           alert('Right was pressed');
       }
       event.defaultPrevented();
+  });*/
+
+  function disableFunctionKeys(e) {
+      var functionKeys = new Array(112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 123);
+      if (functionKeys.indexOf(e.keyCode) > -1 || functionKeys.indexOf(e.which) > -1) {
+          e.preventDefault();
+      }
+  };
+
+  $(document).ready(function() {
+      $(document).on('keydown', disableFunctionKeys);
   });
+
+  
  </script>
  </body>
 </html>
