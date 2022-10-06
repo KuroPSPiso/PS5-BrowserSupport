@@ -12,6 +12,20 @@
   <style type="text/css">
 #head h1 { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=crop,src='http://imrannazar.com/content/titles/jsgb-mbc1.png'); }
 #head > h1 { background: url(http://imrannazar.com/content/titles/jsgb-mbc1.png) no-repeat top left; }
+html,body{
+  background-color: black;
+}
+
+a{
+  color: white;
+}
+.cursed{
+  width: 10rem;
+  height: 10rem;
+  background-image: url('./cursed.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
 
 #content{
   transform: scale(3.0);
@@ -32,21 +46,23 @@
   })();
 
 </script>
- </head>
- <body>
+</head>
+<body>
   <div id="wrapper">
-   <div id="head">
+    <div id="head">
     <a href="http://imrannazar.com/">GBJS Emulator by: Imran Nazar</a>
-   </div>
-   <div id="container">
-    <div id="content">
-<div class="img">
- <div id="jsgb">
-  <script src="./content/files/jsgb-mbc1.jsgb.js"></script>
-  <div id="jsgb_msg"></div>
-  <canvas id="jsgb_screen" width="160" height="144"></canvas><br>
-  <a id="jsgb_reset">Reset</a> | <a id="jsgb_run">Run</a><br>
- </div>
+    </div>
+    <div id="container">
+      <div id="content">
+        <div class="img">
+        <div id="jsgb">
+        <script src="./content/files/jsgb-mbc1.jsgb.js"></script>
+        <div id="jsgb_msg"></div>
+        <canvas id="jsgb_screen" width="160" height="144"></canvas><br>
+        <a id="jsgb_reset">Reset</a> | <a id="jsgb_run">Run</a><br>
+      </div>
+    </div>
+  </div>
 
  <script>
   document.defaultAction = false;
@@ -73,6 +89,7 @@
   });
 
   
- </script>
- </body>
+  </script>
+  <div class="cursed"></div>
+</body>
 </html>
